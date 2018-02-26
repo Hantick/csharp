@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PrzemyslawSzafranskiSQLZD4" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-JKC4Q96\SQLEXPRESS;Initial Catalog=PrzemyslawSzafranskiSQLZD4;Integrated Security=True" SettingsObjectName="PrzemyslawSzafranskiZaddom4.Properties.Settings" SettingsPropertyName="PrzemyslawSzafranskiSQLZD4ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.EventsPerformance" Member="EventsPerformance">
+    <Type Name="EventsPerformance">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EventID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PlaceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Places_EventsPerformance" Member="Places" ThisKey="PlaceID" OtherKey="Id" Type="Places" IsForeignKey="true" />
+      <Association Name="Events_EventsPerformance" Member="Events" ThisKey="EventID" OtherKey="Id" Type="Events" IsForeignKey="true" />
+      <Association Name="Clients_EventsPerformance" Member="Clients" ThisKey="ClientID" OtherKey="Id" Type="Clients" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Places" Member="Places">
+    <Type Name="Places">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Street" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Places_EventsPerformance" Member="EventsPerformance" ThisKey="Id" OtherKey="PlaceID" Type="EventsPerformance" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EventTypes" Member="EventTypes">
+    <Type Name="EventTypes">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EventType" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="EventTypes_Events" Member="Events" ThisKey="Id" OtherKey="EventTypeID" Type="Events" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Events" Member="Events">
+    <Type Name="Events">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EventTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Distance" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FuelCost" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AmoutOfPeople" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EventCost" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="Events_EventsPerformance" Member="EventsPerformance" ThisKey="Id" OtherKey="EventID" Type="EventsPerformance" />
+      <Association Name="EventTypes_Events" Member="EventTypes" ThisKey="EventTypeID" OtherKey="Id" Type="EventTypes" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Clients" Member="Clients">
+    <Type Name="Clients">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Surname" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PESEL" Type="System.String" DbType="NVarChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(9) NOT NULL" CanBeNull="false" />
+      <Column Name="EMail" Type="System.String" DbType="NVarChar(70)" CanBeNull="true" />
+      <Association Name="Clients_EventsPerformance" Member="EventsPerformance" ThisKey="Id" OtherKey="ClientID" Type="EventsPerformance" />
+    </Type>
+  </Table>
+</Database>
