@@ -1,0 +1,10 @@
+0. Konfiguracja reprezytorium
+1. Stworzyæ aplikacjê, w której bedzie Timer, pictureBox, dataGridView, if, for
+podstawowe kontrolki
+[         ]               [              ]               [            ]
+zasoby ktore jak sie kupi to sie pojawia cos szybciej lub wolniej 
+jak byla taka gra kliknij w kupkê, kup krowe, dzieci zeby jak najwiecej ic hzebrac
+
+zadanie do niedziela, programistyczny wieczór do 0:00
+
+wyslac to co na zajeciach na mail knkredek@gmail.com w tytule Imie.NazwiskoLab1.7z
