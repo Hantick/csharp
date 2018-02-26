@@ -1,2 +1,3 @@
 C# Projects made by Hantick
-test
+
+Hello, im commiting here my C# projects I made during my studies.
