@@ -10,13 +10,16 @@ namespace CoreServicesBootCamp
    public class Order
     {
         private
-        String clientId { get; set; }        //alfanumeryczne bez spacji, nie dłuższe niż 6 znaków
+        String clientId;        //alfanumeryczne bez spacji, nie dłuższe niż 6 znaków
         ulong requestId;
         String name;            //alfanumeryczne ze spacjami, nie dłuższe niz 255 znaków
         uint quantity;
         double price;
 
-
+        String getClientId()
+        {
+            return clientId;
+        }
 
         public
         Order(String clientId, ulong requestId, String name, uint quantity, double price)

@@ -109,8 +109,15 @@ namespace CoreServicesBootCamp
 
         private void refreshData()
         {
+            List<Order> list = database.getOrders();
+            foreach(Order it in list)
+            {
+                Console.WriteLine("chuj");
+                Console.WriteLine();
+            }
             dataGridView1.AutoGenerateColumns = true;
             dataGridView1.DataSource = database.getOrders();
         }
+
     }
 }

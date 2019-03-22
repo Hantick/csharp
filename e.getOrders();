@@ -1,0 +1,153 @@
+[33mcommit 5a0ea2dd92a38513e8d685ecb206a8fe337c41dd[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Hantick <hantick@DESKTOP-JKC4Q96.localdomain>
+Date:   Sat Mar 23 00:04:50 2019 +0100
+
+    Eksperyment z datagridview
+
+[33mcommit f9eec035f61dfdf1ac62763f791911ed60e2f9d9[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Hantick <hantick@DESKTOP-JKC4Q96.localdomain>
+Date:   Fri Mar 22 23:44:41 2019 +0100
+
+    Zaimplementowanie wczytywania CSV, kolejny krok to wrzucenie w DataGrid
+
+[33mcommit 3451c701bfa73cd5e720a05e0a07601fc28cb07b[m
+Author: Hantick <hantick@DESKTOP-JKC4Q96.localdomain>
+Date:   Fri Mar 22 21:46:25 2019 +0100
+
+    Hotfix
+
+[33mcommit c46e7e4591077d45ba1aac2a6c479e710e23a00a[m
+Author: Hantick <hantick@DESKTOP-JKC4Q96.localdomain>
+Date:   Fri Mar 22 21:40:09 2019 +0100
+
+    Dodanie testow jednostkowych do klasy InMemoryDatabase
+
+[33mcommit ad3adabc23e31b3a6c36e8cd4ac20075b597d361[m
+Merge: 8cc7be5 27c15bd
+Author: Hantick <hantick@DESKTOP-JKC4Q96.localdomain>
+Date:   Fri Mar 22 15:09:42 2019 +0100
+
+    Merge branch 'master' of https://github.com/Hantick/csharp
+
+[33mcommit 8cc7be55ac084b1072fc8517c568f33934366094[m
+Author: Hantick <hantick@DESKTOP-JKC4Q96.localdomain>
+Date:   Fri Mar 22 15:08:12 2019 +0100
+
+    Dodanie wczytywania plikow dialog boxem
+
+[33mcommit 16f005a6eefca5d6ca2a26fa69f5b54fe550346d[m
+Author: Hantick <lordszrel@gmail.com>
+Date:   Fri Mar 22 15:03:06 2019 +0100
+
+    Zaimplementowanie wczytywania plikow z okna dialogowego
+
+[33mcommit 27c15bd202b606c07a246558ac9a8dd109d5b008[m
+Author: Przemysław Szafrański <36815427+Hantick@users.noreply.github.com>
+Date:   Tue Mar 19 00:54:10 2019 +0100
+
+    Update README.md
+
+[33mcommit eedde87c805be858df8d681685d00894999765a7[m
+Author: Przemysław Szafrański <36815427+Hantick@users.noreply.github.com>
+Date:   Tue Mar 19 00:52:54 2019 +0100
+
+    Create README.md
+
+[33mcommit e991ddf5b73f78de0880c081a92d28c8d72abc4d[m
+Author: Hantick <lordszrel@gmail.com>
+Date:   Tue Mar 19 00:51:09 2019 +0100
+
+    Inicjalizacja
+
+[33mcommit cb52bcf7e3c94a320b664e6137135e86b17b8596[m
+Author: Hantick <lordszrel@gmail.com>
+Date:   Mon Feb 26 23:38:05 2018 +0100
+
+    SQL Database Manager
+
+[33mcommit aa260a1f55d493bdc3aec5a62931319a1943ebca[m
+Author: Hantick <lordszrel@gmail.com>
+Date:   Mon Feb 26 23:33:34 2018 +0100
+
+    adding SQL Soldier LINQ Project
+
+[33mcommit 83717f141806fd08f7536db556670c41204d502c[m
+Merge: e4fd364 cd27113
+Author: Hantick <lordszrel@gmail.com>
+Date:   Mon Feb 26 23:24:12 2018 +0100
+
+    Merge branch 'master' of https://github.com/Hantick/csharp
+    
+    # Please enter a commit message to explain why this merge is necessary,
+    # especially if it merges an updated upstream into a topic branch.
+    #
+    # Lines starting with '#' will be ignored, and an empty message aborts
+    # the commit.
+
+[33mcommit e4fd36428b3cfbe1b8822582821ff589ff6abd70[m
+Author: Hantick <lordszrel@gmail.com>
+Date:   Mon Feb 26 23:16:51 2018 +0100
+
+    Added Kupka Simulator
+
+[33mcommit cd2711311579d106b15722351c58110912c7bd97[m
+Author: Przemysław Szafrański <36815427+Hantick@users.noreply.github.com>
+Date:   Mon Feb 26 23:10:24 2018 +0100
+
+    Create .gitignore
+
+[33mcommit dd9f6cd3e4cb8f487979a45cfc579ec35b52de85[m
+Author: Przemysław Szafrański <36815427+Hantick@users.noreply.github.com>
+Date:   Mon Feb 26 22:42:58 2018 +0100
+
+    Update cmdSheet.txt
+
+[33mcommit 69dd151caf8914cd7d50cfa86e31ec7bdcfa615c[m
+Author: Przemysław Szafrański <36815427+Hantick@users.noreply.github.com>
+Date:   Mon Feb 26 22:40:47 2018 +0100
+
+    Update README.md
+
+[33mcommit 15335882f1ffc221147ea159176823778ff4ce9c[m
+Author: Przemysław Szafrański <36815427+Hantick@users.noreply.github.com>
+Date:   Mon Feb 26 22:39:59 2018 +0100
+
+    Update README.md
+
+[33mcommit 2fb11a557fc9bb149a0b52f98a0ba3bca4f46e8c[m
+Author: Przemysław Szafrański <36815427+Hantick@users.noreply.github.com>
+Date:   Mon Feb 26 22:39:30 2018 +0100
+
+    Update README.md
+
+[33mcommit 38b0e47014f1400cca7587291c17012a629cceb2[m
+Author: Hantick <lordszrel@gmail.com>
+Date:   Mon Feb 26 22:36:14 2018 +0100
+
+    delete
+
+[33mcommit 96b209a7a33dc93f1512e0aa79dc520e6cad3bbd[m
+Author: Hantick <lordszrel@gmail.com>
+Date:   Mon Feb 26 22:31:59 2018 +0100
+
+    dodanie instrukcji
+
+[33mcommit fb0b6a2418beabd28cb63ec31f118307d2edc673[m
+Author: Hantick <lordszrel@gmail.com>
+Date:   Mon Feb 26 22:22:17 2018 +0100
+
+    test wrzucenia
+
+[33mcommit b3fb98d3377a84afa8ca8155550d6c0e466e64c1[m
+Author: Przemysław Szafrański <36815427+Hantick@users.noreply.github.com>
+Date:   Mon Feb 26 22:02:23 2018 +0100
+
+    test
+    
+    test
+
+[33mcommit f5794953960e9a55676900d7c0170d0e0262a3c9[m
+Author: Przemysław Szafrański <36815427+Hantick@users.noreply.github.com>
+Date:   Mon Feb 26 22:01:21 2018 +0100
+
+    Create README.md
