@@ -72,7 +72,7 @@ namespace CoreServicesBootCamp
                     }
                 }
             }
-            catch (CsvHelper.MissingFieldException ex)
+            catch (CsvHelper.MissingFieldException)
             {
                 MessageBox.Show(this, "{1} Błąd. - nie można znaleźć odpowiednich rubryk w pliku CSV. Upewnij się, że roszerzenie (.CSV) oraz format jest odpowiedni", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -85,24 +85,32 @@ namespace CoreServicesBootCamp
         /// <summary>
         /// Czytnik plików CSV, wykorzystujący bibliotekę CsvHelper
         /// </summary>
-        void csvReader(String path)
+        private void csvReader(String path)
         {
             using (var reader = new StreamReader(path))
             using (var csv = new CsvHelper.CsvReader(reader))
             {
 
-                csv.Configuration.RegisterClassMap<OrderMapper>();
+               // csv.Configuration.RegisterClassMap<OrderMapper>();
                 csv.Configuration.HasHeaderRecord = true;
                // csv.Configuration.MissingFieldFound = null;
                 csv.Configuration.Delimiter = ",";
                 csv.Read();
                 csv.ReadHeader();
+
                 while (csv.Read())
                 {
                     
                     database.createOrder(csv.GetField<String>("Client_Id"), csv.GetField<ulong>("Request_id"), csv.GetField<String>("Name"), csv.GetField<uint>("Quantity"), 0/*csv.GetField<double>("Price")*/);
                 }
+                refreshData();
             }
+        }
+
+        private void refreshData()
+        {
+            dataGridView1.AutoGenerateColumns = true;
+            dataGridView1.DataSource = database.getOrders();
         }
     }
 }

@@ -44,7 +44,7 @@ namespace CoreServicesBootCamp
             this.price = price;
         }
 
-        public class OrderMapper : ClassMap<Order>
+      /*  public class OrderMapper : ClassMap<Order>
         {
             public OrderMapper()
             {
@@ -54,7 +54,7 @@ namespace CoreServicesBootCamp
                 Map(x => x.quantity).Name("Quantity").Index(3);
                 Map(x => x.price).Name("Price").Index(4);
             }
-        }
+        }*/
 
     }
 
