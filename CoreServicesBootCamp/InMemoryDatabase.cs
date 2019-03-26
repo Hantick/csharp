@@ -10,17 +10,32 @@ namespace CoreServicesBootCamp
    public class Order
     {
         private
-        String clientId;        //alfanumeryczne bez spacji, nie dłuższe niż 6 znaków
+        String clientId;       //alfanumeryczne bez spacji, nie dłuższe niż 6 znaków
         ulong requestId;
         String name;            //alfanumeryczne ze spacjami, nie dłuższe niz 255 znaków
         uint quantity;
         double price;
 
-        String getClientId()
+        public String getClientId()
         {
             return clientId;
         }
-
+        public ulong getRequestId()
+        {
+            return requestId;
+        }
+        public String getName()
+        {
+            return name;
+        }
+        public uint getQuantity()
+        {
+            return quantity;
+        }
+        public double getPrice()
+        {
+            return price;
+        }
         public
         Order(String clientId, ulong requestId, String name, uint quantity, double price)
         {
@@ -46,8 +61,7 @@ namespace CoreServicesBootCamp
             this.quantity = quantity;
             this.price = price;
         }
-
-      /*  public class OrderMapper : ClassMap<Order>
+       public class OrderMapper : ClassMap<Order>
         {
             public OrderMapper()
             {
@@ -57,7 +71,7 @@ namespace CoreServicesBootCamp
                 Map(x => x.quantity).Name("Quantity").Index(3);
                 Map(x => x.price).Name("Price").Index(4);
             }
-        }*/
+        }
 
     }
 
@@ -72,8 +86,8 @@ namespace CoreServicesBootCamp
         }
         public void createOrder(String clientId, ulong requestId, String name, uint quantity, double price)
         {
-            var tmp = new Order(clientId, requestId, name, quantity, price);
-            orders.Add(tmp);
+           // var tmp = new Order(clientId, requestId, name, quantity, price);
+            orders.Add(new Order(clientId, requestId, name, quantity, price));
 
         }
         /// <summary>
