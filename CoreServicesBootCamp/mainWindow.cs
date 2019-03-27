@@ -13,6 +13,7 @@ namespace CoreServicesBootCamp
     public partial class mainWindow : Form
     {
         InMemoryDatabase database;
+        fileReaders filereaders;
         public mainWindow()
         {
             InitializeComponent();
@@ -22,7 +23,7 @@ namespace CoreServicesBootCamp
             refreshData();
         }
 
-
+        #region Wczytywanie plików
         private void wczytajBazęToolStripMenuItem_Click(object sender, EventArgs e)
         {
             loadFiles();
@@ -56,15 +57,18 @@ namespace CoreServicesBootCamp
                             {
                                 if (file.Contains(".csv"))
                                 {
-                                    csvReader(file);
+                                    database.addOrders(filereaders.csvReader(file));
+                                    refreshData();
                                 }
                                 else if (file.Contains(".xml"))
                                 {
-                                    xmlReader(file);
+                                    filereaders.xmlReader(file);
+                                    refreshData();
                                 }
                                 else if (file.Contains(".json"))
                                 {
-                                    jsonReader(file);
+                                    filereaders.jsonReader(file);
+                                    refreshData();
                                 }
                                 // fileContent = reader.ReadToEnd();
                                 database.check();
@@ -84,69 +88,7 @@ namespace CoreServicesBootCamp
                 MessageBox.Show(this, "{0} Błąd." + ex, "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        struct tmp
-        {
-            public List<request> requests { get; set; }
-        };
-        /// <summary>
-        /// Czytnik plików JSON.
-        /// </summary>
-        private void jsonReader(string file)
-        {
-
-            string jsonString = File.ReadAllText(file, Encoding.UTF8);
-            tmp requests = JsonConvert.DeserializeObject<tmp>(jsonString);
-            foreach (request req in requests.requests)
-            {
-                database.createOrder(req);
-            }
-            refreshData();
-        }
-        /// <summary>
-        /// Czytnik plików XML.
-        /// </summary>
-        private void xmlReader(string file)
-        {
-            string xmlString = File.ReadAllText(file, Encoding.UTF8);
-            StringReader strreader = new StringReader(xmlString);
-            XmlSerializer ser = new XmlSerializer(typeof(List<request>), new XmlRootAttribute("requests"));
-            List<request> orders =
-                (List<request>)ser.Deserialize(strreader);
-            foreach (request or in orders)
-            {
-                database.createOrder(or);
-            }
-            strreader.Close();
-            refreshData();
-
-        }
-
-        /// <summary>
-        /// Czytnik plików CSV, wykorzystujący bibliotekę CsvHelper
-        /// </summary>
-        private void csvReader(String path)
-        {
-            using (var reader = new StreamReader(path))
-            using (var csv = new CsvHelper.CsvReader(reader))
-            {
-
-                // csv.Configuration.RegisterClassMap<OrderMapper>();
-                csv.Configuration.HasHeaderRecord = true;
-                // csv.Configuration.MissingFieldFound = null;
-                csv.Configuration.Delimiter = ",";
-                csv.Read();
-                csv.ReadHeader();
-
-                while (csv.Read())
-                {
-                    String pricestr = csv.GetField<String>("Price");
-                    Double price = Double.Parse(pricestr.Replace('.', ','));
-                    database.createOrder(csv.GetField<String>("Client_Id"), csv.GetField<ulong>("Request_id"), csv.GetField<String>("Name"), csv.GetField<uint>("Quantity"), price);
-                }
-                refreshData();
-            }
-        }
+        #endregion
 
         private void refreshData()
         {
