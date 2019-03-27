@@ -94,7 +94,7 @@ namespace CoreServicesBootCamp
         /// </summary>
         private void refreshData()
         {
-
+            database.check();
             List<request> listOfOrders = database.getOrders();
             if (listOfOrders.Count != 0)
             {
@@ -160,6 +160,10 @@ namespace CoreServicesBootCamp
                     listaZamówieńDlaKlientaToolStripMenuItem_Click(sender, e);
                     break;
                 case 5:
+                    średniaWartośćZamówieniaToolStripMenuItem_Click(sender,e);
+                    break;
+                case 6:
+                    średniaWartośćZamówieniaDlaKlientaToolStripMenuItem_Click(sender, e);
                     break;
                 case 7:
                     ilośćZamówieńpoNazwieToolStripMenuItem_Click(sender, e);
@@ -370,8 +374,139 @@ namespace CoreServicesBootCamp
             }
         }
         #endregion
+        #region ŚredniaWartośćZamówienia raport
+        /// <summary>
+        /// Średnia wartość zamówienia
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void średniaWartośćZamówieniaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            comboBox1.SelectedIndex = -1;
+            dataGridView2.Rows.Clear();
+            dataGridView2.Columns.Clear();
+            List<request> listOfOrders = database.getOrders();
+            if (listOfOrders.Count == 0)
+            {
+                MessageBox.Show(this, "{0} Baza danych jest pusta! Nie można wygenerować raportu", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                comboBox1.SelectedIndex = 5;
+                dataGridView2.AutoGenerateColumns = false;
+                dataGridView2.Columns.Add("name", "Name");
+                dataGridView2.Columns.Add("average", "Average");
 
+                List<String> products = new List<String>();
+                String tmp;
+                //Odseparowanie różnych produktów
+                foreach (request req in listOfOrders)
+                {
+                    tmp = req.getName();
+                    if (products.Contains(tmp) == false)
+                        products.Add(tmp);
+                }
+                //Sprawdź każdy produkt, ile sie zawiera
+                uint quantity = 0;
+                double price = 0;
+                double sumavg = 0;
+                int counter = 0;
+                foreach (String str in products)
+                {
+                    quantity = 0;
+                    price = 0;
+                    sumavg = 0;
+                    counter = 0;
+                    foreach (request req in listOfOrders)
+                    {
+                        if (req.getName() == str)
+                        {
+                            quantity = req.getQuantity();
+                            price = req.getPrice()*quantity;
+                            sumavg += price / quantity;
+                            counter++;
+                        }
+                    }
+                    DataGridViewRow row = (DataGridViewRow)dataGridView2.RowTemplate.Clone();
+                    row.CreateCells(dataGridView2, str, sumavg/counter);
+                    dataGridView2.Rows.Add(row);
+                }
+            }        
+        }
+        #endregion
+        #region ŚredniaWartośćZamówienia dla klienta o id raport
+        /// <summary>
+        /// Średnia wartość zamówienia dla klienta o id.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void średniaWartośćZamówieniaDlaKlientaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            comboBox1.SelectedIndex = -1;
+            dataGridView2.Rows.Clear();
+            dataGridView2.Columns.Clear();
+            List<request> listOfOrders = database.getOrders();
+            if (listOfOrders.Count == 0)
+            {
+                MessageBox.Show(this, "{0} Baza danych jest pusta! Nie można wygenerować raportu", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                String clientId = Microsoft.VisualBasic.Interaction.InputBox("Podaj ID klienta, którego ilość zamówień chcesz wyświetlić", "Generowanie raportu ilości zamówień dla klienta...", "0");
+                if (clientId.Equals(""))
+                {
 
+                    return;
+                }
+                else if (database.clientExists(clientId) == false)
+                {
+                    MessageBox.Show(this, "{0} Podane Client_Id nie istnieje w bazie! Upewnij się, że wprowadziłeś odpowiednią liczbę.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                comboBox1.SelectedIndex = 6;
+                dataGridView2.AutoGenerateColumns = false;
+                dataGridView2.Columns.Add("name", "Name");
+                dataGridView2.Columns.Add("average", "Average");
+
+                List<String> products = new List<String>();
+                String tmp;
+                //Odseparowanie różnych produktów
+                foreach (request req in listOfOrders)
+                {
+                    tmp = req.getName();
+                    if (products.Contains(tmp) == false && req.getClientId()==clientId)
+                        products.Add(tmp);
+                }
+                //Sprawdź każdy produkt, ile sie zawiera
+                uint quantity = 0;
+                double price = 0;
+                double sumavg = 0;
+                int counter = 0;
+                foreach (String str in products)
+                {
+                    quantity = 0;
+                    price = 0;
+                    sumavg = 0;
+                    counter = 0;
+                    foreach (request req in listOfOrders)
+                    {
+                        if (req.getName() == str && req.getClientId() == clientId)
+                        {
+                            quantity = req.getQuantity();
+                            price = req.getPrice() * quantity;
+                            sumavg += price / quantity;
+                            counter++;
+                        }
+                    }
+                    DataGridViewRow row = (DataGridViewRow)dataGridView2.RowTemplate.Clone();
+                    row.CreateCells(dataGridView2, str, sumavg / counter);
+                    dataGridView2.Rows.Add(row);
+                }
+            }
+        }
+        #endregion
         #region IloscZamowien z sortowaniem raport
         /// <summary>
         /// Ilosc zamowien, sortowane po nazwie przedmiotów.
@@ -531,7 +666,7 @@ namespace CoreServicesBootCamp
             {
                 return;
             }
-            comboBox1.SelectedIndex = 10;
+            comboBox1.SelectedIndex = 9;
             dataGridView2.AutoGenerateColumns = false;
             dataGridView2.Columns.Add("name", "Name");
             dataGridView2.Columns.Add("quantity", "Quantity");
@@ -547,5 +682,12 @@ namespace CoreServicesBootCamp
             }
         }
         #endregion
+
+        private void mainWindow_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

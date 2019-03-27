@@ -64,6 +64,11 @@ namespace CoreServicesBootCamp
         {
             min = double.Parse(textBoxMIN.Text);
             max = double.Parse(textBoxMAX.Text);
+            if (max < min)
+            {
+                MessageBox.Show(this, "{0} Wartość Do nie może być większa od Od ", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+            }
             this.DialogResult = DialogResult.OK;
             this.Owner.Enabled = true;
             this.Close();

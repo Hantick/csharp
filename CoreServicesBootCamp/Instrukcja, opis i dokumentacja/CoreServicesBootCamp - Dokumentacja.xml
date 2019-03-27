@@ -161,6 +161,20 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
+        <member name="M:CoreServicesBootCamp.mainWindow.średniaWartośćZamówieniaToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Średnia wartość zamówienia
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CoreServicesBootCamp.mainWindow.średniaWartośćZamówieniaDlaKlientaToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Średnia wartość zamówienia dla klienta o id.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
         <member name="M:CoreServicesBootCamp.mainWindow.ilośćZamówieńpoNazwieToolStripMenuItem_Click(System.Object,System.EventArgs)">
             <summary>
             Ilosc zamowien, sortowane po nazwie przedmiotów.

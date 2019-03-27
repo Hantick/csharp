@@ -163,6 +163,7 @@
             this.średniaWartośćZamówieniaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
             this.średniaWartośćZamówieniaToolStripMenuItem.Size = new System.Drawing.Size(356, 22);
             this.średniaWartośćZamówieniaToolStripMenuItem.Text = "Średnia wartość zamówienia";
+            this.średniaWartośćZamówieniaToolStripMenuItem.Click += new System.EventHandler(this.średniaWartośćZamówieniaToolStripMenuItem_Click);
             // 
             // średniaWartośćZamówieniaDlaKlientaToolStripMenuItem
             // 
@@ -170,6 +171,7 @@
             this.średniaWartośćZamówieniaDlaKlientaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
             this.średniaWartośćZamówieniaDlaKlientaToolStripMenuItem.Size = new System.Drawing.Size(356, 22);
             this.średniaWartośćZamówieniaDlaKlientaToolStripMenuItem.Text = "Średnia wartość zamówienia dla klienta...";
+            this.średniaWartośćZamówieniaDlaKlientaToolStripMenuItem.Click += new System.EventHandler(this.średniaWartośćZamówieniaDlaKlientaToolStripMenuItem_Click);
             // 
             // ilośćZamówieńpoNazwieToolStripMenuItem
             // 
@@ -375,6 +377,7 @@
             this.MaximizeBox = false;
             this.Name = "mainWindow";
             this.Text = "Obsługa zamówień";
+            this.Load += new System.EventHandler(this.mainWindow_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
