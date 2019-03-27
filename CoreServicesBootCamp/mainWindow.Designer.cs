@@ -40,7 +40,6 @@
             this.ilośćZamówieńDlaKlientaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.łToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listaWszystkichZamówieńToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listaZamówieńDlaKlientaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.średniaWartośćZamówieniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.średniaWartośćZamówieniaDlaKlientaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -106,7 +105,6 @@
             this.ilośćZamówieńDlaKlientaToolStripMenuItem,
             this.cToolStripMenuItem,
             this.łToolStripMenuItem,
-            this.listaWszystkichZamówieńToolStripMenuItem,
             this.listaZamówieńDlaKlientaToolStripMenuItem,
             this.średniaWartośćZamówieniaToolStripMenuItem,
             this.średniaWartośćZamówieniaDlaKlientaToolStripMenuItem,
@@ -146,16 +144,10 @@
             // 
             this.łToolStripMenuItem.Name = "łToolStripMenuItem";
             this.łToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+D";
+            this.łToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
             this.łToolStripMenuItem.Size = new System.Drawing.Size(356, 22);
             this.łToolStripMenuItem.Text = "Łączna kwota zamówień dla klienta...";
             this.łToolStripMenuItem.Click += new System.EventHandler(this.łToolStripMenuItem_Click);
-            // 
-            // listaWszystkichZamówieńToolStripMenuItem
-            // 
-            this.listaWszystkichZamówieńToolStripMenuItem.Name = "listaWszystkichZamówieńToolStripMenuItem";
-            this.listaWszystkichZamówieńToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.listaWszystkichZamówieńToolStripMenuItem.Size = new System.Drawing.Size(356, 22);
-            this.listaWszystkichZamówieńToolStripMenuItem.Text = "Lista wszystkich zamówień";
             // 
             // listaZamówieńDlaKlientaToolStripMenuItem
             // 
@@ -163,6 +155,7 @@
             this.listaZamówieńDlaKlientaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
             this.listaZamówieńDlaKlientaToolStripMenuItem.Size = new System.Drawing.Size(356, 22);
             this.listaZamówieńDlaKlientaToolStripMenuItem.Text = "Lista zamówień dla klienta...";
+            this.listaZamówieńDlaKlientaToolStripMenuItem.Click += new System.EventHandler(this.listaZamówieńDlaKlientaToolStripMenuItem_Click);
             // 
             // średniaWartośćZamówieniaToolStripMenuItem
             // 
@@ -324,7 +317,6 @@
             "Ilość zamówień dla klienta...",
             "Łączna kwota zamówień",
             "Łączna kwota zamówień dla klienta...",
-            "Lista wszystkich zamówień",
             "Lista zamówień dla klienta...",
             "Średnia wartość zamówienia",
             "Średnia wartość zamówienia dla klienta...",
@@ -377,6 +369,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
@@ -408,7 +401,6 @@
         private System.Windows.Forms.ToolStripMenuItem ilośćZamówieńDlaKlientaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem łToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem listaWszystkichZamówieńToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listaZamówieńDlaKlientaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem średniaWartośćZamówieniaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem średniaWartośćZamówieniaDlaKlientaToolStripMenuItem;

@@ -39,7 +39,7 @@ namespace CoreServicesBootCamp
         public request(){ }
         public request(String clientId, ulong requestId, String name, uint quantity, double price)
         {
-            if(clientId==null || name==null)
+       /*     if(clientId==null || name==null)
             {
                 throw new ArgumentNullException("Nie można podawać wartości pustych!");
             }
@@ -54,7 +54,7 @@ namespace CoreServicesBootCamp
             if(name.Length>255)
             {
                 throw new ArgumentException("Name zawiera więcej niż 255 znaków!");
-            }
+            }*/
             this.clientId = clientId;
             this.requestId = requestId;
             this.name = name;
@@ -152,6 +152,36 @@ namespace CoreServicesBootCamp
                 price += req.getQuantity() * req.getPrice();
             }
             return price;
+        }
+
+        public void check()
+        {
+            String clientId, name;
+            foreach (request req in orders)
+            {
+                clientId = req.getClientId();
+                name = req.getName();
+                if (clientId == null || name == null)
+                {
+                    orders.Remove(req);
+                    throw new ArgumentNullException("Nie można podawać wartości pustych!");
+                }
+                if (clientId.Contains(" "))
+                {
+                    orders.Remove(req);
+                    throw new ArgumentException("ClientID zawiera spacje!");
+                }
+                if (clientId.Length > 6)
+                {
+                    orders.Remove(req);
+                    throw new ArgumentException("ClientID zawiera więcej niż 6 znaków!");
+                }
+                if (name.Length > 255)
+                {
+                    orders.Remove(req);
+                    throw new ArgumentException("Name zawiera więcej niż 255 znaków!");
+                }
+            }
         }
     }
 }

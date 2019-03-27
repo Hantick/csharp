@@ -19,6 +19,7 @@ namespace CoreServicesBootCamp
             database = new InMemoryDatabase();
             this.Show();
             loadFiles();
+            refreshData();
         }
 
 
@@ -66,7 +67,8 @@ namespace CoreServicesBootCamp
                                     jsonReader(file);
                                 }
                                 // fileContent = reader.ReadToEnd();
-
+                                database.check();
+                                
                                 //   MessageBox.Show(fileContent, "Ładowanie: " + file, MessageBoxButtons.OK);
                             }
                         }
@@ -211,10 +213,17 @@ namespace CoreServicesBootCamp
                     łToolStripMenuItem_Click(sender, e);
                     break;
                 case 4:
+                    listaZamówieńDlaKlientaToolStripMenuItem_Click(sender, e);
                     break;
                 case 5:
                     break;
-                case 10:
+                case 7:
+                    ilośćZamówieńpoNazwieToolStripMenuItem_Click(sender, e);
+                    break;
+                case 8:
+                    ilośćZamówieńDlaKlientapoNazwieToolStripMenuItem_Click(sender, e);
+                    break;
+                case 9:
                     zamówieniaWPodanymPrzedzialeCenowymToolStripMenuItem_Click(sender, e);
                     break;
             }
@@ -356,7 +365,7 @@ namespace CoreServicesBootCamp
                     MessageBox.Show(this, "{0} Podane Client_Id nie istnieje w bazie! Upewnij się, że wprowadziłeś odpowiednią liczbę.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                comboBox1.SelectedIndex = 1;
+                comboBox1.SelectedIndex = 3;
                 dataGridView2.AutoGenerateColumns = false;
                 dataGridView2.Columns.Add("quantity", "Quantity");
                 DataGridViewRow row = (DataGridViewRow)dataGridView2.RowTemplate.Clone();
@@ -365,8 +374,58 @@ namespace CoreServicesBootCamp
             }
         }
         #endregion
+        #region ListaZamówień dla klienta o id raport
+        /// <summary>
+        /// Lista zamowien dla klienta o id.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listaZamówieńDlaKlientaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            comboBox1.SelectedIndex = -1;
+            dataGridView2.Rows.Clear();
+            dataGridView2.Columns.Clear();
+            List<request> listOfOrders = database.getOrders();
+            if (listOfOrders.Count == 0)
+            {
+                MessageBox.Show(this, "{0} Baza danych jest pusta! Nie można wygenerować raportu", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                String clientId = Microsoft.VisualBasic.Interaction.InputBox("Podaj ID klienta, którego ilość zamówień chcesz wyświetlić", "Generowanie raportu ilości zamówień dla klienta...", "0");
+                if (clientId.Equals(""))
+                {
+
+                    return;
+                }
+                else if (database.clientExists(clientId) == false)
+                {
+                    MessageBox.Show(this, "{0} Podane Client_Id nie istnieje w bazie! Upewnij się, że wprowadziłeś odpowiednią liczbę.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                comboBox1.SelectedIndex = 4;
+                dataGridView2.AutoGenerateColumns = false;
+                dataGridView2.Columns.Add("requestId", "Request_id");
+                dataGridView2.Columns.Add("quantity", "Quantity");
+                dataGridView2.Columns.Add("name", "Name");
+                dataGridView2.Columns.Add("price", "Price");
+                foreach (request req in listOfOrders)
+                {
+                    if(req.getClientId()==clientId)
+                    {
+                        DataGridViewRow row = (DataGridViewRow)dataGridView2.RowTemplate.Clone();
+                        row.CreateCells(dataGridView2, req.getRequestId(),req.getQuantity(),req.getName(),req.getPrice());
+                        dataGridView2.Rows.Add(row);
+                    }
+                }
+                
 
 
+
+            }
+        }
+        #endregion
 
 
         #region IloscZamowien z sortowaniem raport
