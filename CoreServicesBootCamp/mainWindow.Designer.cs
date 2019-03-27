@@ -33,11 +33,14 @@
             this.programToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wczytajBazęToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.requestId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clientId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.requestId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pokażRaportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ilośćZamówieńToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ilośćZamówieńDlaKlientaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -45,7 +48,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.programToolStripMenuItem});
+            this.programToolStripMenuItem,
+            this.pokażRaportToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1110, 24);
@@ -86,25 +90,12 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(544, 150);
             this.dataGridView1.TabIndex = 1;
- 
             // 
-            // price
+            // clientId
             // 
-            this.price.HeaderText = "Price";
-            this.price.Name = "price";
-            this.price.ReadOnly = true;
-            // 
-            // quantity
-            // 
-            this.quantity.HeaderText = "Quantity";
-            this.quantity.Name = "quantity";
-            this.quantity.ReadOnly = true;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "Name";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
+            this.clientId.HeaderText = "Client_Id";
+            this.clientId.Name = "clientId";
+            this.clientId.ReadOnly = true;
             // 
             // requestId
             // 
@@ -112,11 +103,44 @@
             this.requestId.Name = "requestId";
             this.requestId.ReadOnly = true;
             // 
-            // clientId
+            // name
             // 
-            this.clientId.HeaderText = "Client_Id";
-            this.clientId.Name = "clientId";
-            this.clientId.ReadOnly = true;
+            this.name.HeaderText = "Name";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // quantity
+            // 
+            this.quantity.HeaderText = "Quantity";
+            this.quantity.Name = "quantity";
+            this.quantity.ReadOnly = true;
+            // 
+            // price
+            // 
+            this.price.HeaderText = "Price";
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
+            // 
+            // pokażRaportToolStripMenuItem
+            // 
+            this.pokażRaportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ilośćZamówieńToolStripMenuItem,
+            this.ilośćZamówieńDlaKlientaToolStripMenuItem});
+            this.pokażRaportToolStripMenuItem.Name = "pokażRaportToolStripMenuItem";
+            this.pokażRaportToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
+            this.pokażRaportToolStripMenuItem.Text = "Pokaż raport";
+            // 
+            // ilośćZamówieńToolStripMenuItem
+            // 
+            this.ilośćZamówieńToolStripMenuItem.Name = "ilośćZamówieńToolStripMenuItem";
+            this.ilośćZamówieńToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.ilośćZamówieńToolStripMenuItem.Text = "Ilość zamówień";
+            // 
+            // ilośćZamówieńDlaKlientaToolStripMenuItem
+            // 
+            this.ilośćZamówieńDlaKlientaToolStripMenuItem.Name = "ilośćZamówieńDlaKlientaToolStripMenuItem";
+            this.ilośćZamówieńDlaKlientaToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.ilośćZamówieńDlaKlientaToolStripMenuItem.Text = "Ilość zamówień dla klienta";
             // 
             // mainWindow
             // 
@@ -149,6 +173,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn price;
         private System.Windows.Forms.BindingSource inMemoryDatabaseBindingSource;
+        private System.Windows.Forms.ToolStripMenuItem pokażRaportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ilośćZamówieńToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ilośćZamówieńDlaKlientaToolStripMenuItem;
     }
 }
 

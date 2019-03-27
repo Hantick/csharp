@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace CoreServicesBootCamp
 {
-   public class Order
+   public class request
     {
-        private
-        String clientId;       //alfanumeryczne bez spacji, nie dłuższe niż 6 znaków
-        ulong requestId;
-        String name;            //alfanumeryczne ze spacjami, nie dłuższe niz 255 znaków
-        uint quantity;
-        double price;
+        
+        public String clientId { get; set; }       //alfanumeryczne bez spacji, nie dłuższe niż 6 znaków
+        public ulong requestId { get; set; }
+        public String name { get; set; }            //alfanumeryczne ze spacjami, nie dłuższe niz 255 znaków
+        public uint quantity { get; set; }
+        public double price { get; set; }
 
         public String getClientId()
         {
@@ -36,8 +36,8 @@ namespace CoreServicesBootCamp
         {
             return price;
         }
-        public
-        Order(String clientId, ulong requestId, String name, uint quantity, double price)
+        public request(){ }
+        public request(String clientId, ulong requestId, String name, uint quantity, double price)
         {
             if(clientId==null || name==null)
             {
@@ -61,7 +61,7 @@ namespace CoreServicesBootCamp
             this.quantity = quantity;
             this.price = price;
         }
-       public class OrderMapper : ClassMap<Order>
+    /*   public class OrderMapper : ClassMap<Order>
         {
             public OrderMapper()
             {
@@ -71,23 +71,29 @@ namespace CoreServicesBootCamp
                 Map(x => x.quantity).Name("Quantity").Index(3);
                 Map(x => x.price).Name("Price").Index(4);
             }
-        }
+        }*/
 
     }
 
     public class InMemoryDatabase
     {
         private
-        List<Order> orders;
+        List<request> orders;
 
         public InMemoryDatabase()
         {
-            orders = new List<Order>();
+            orders = new List<request>();
+        }
+        public void createOrder(request order)
+        {
+            // var tmp = new Order(clientId, requestId, name, quantity, price);
+            orders.Add(order);
+
         }
         public void createOrder(String clientId, ulong requestId, String name, uint quantity, double price)
         {
            // var tmp = new Order(clientId, requestId, name, quantity, price);
-            orders.Add(new Order(clientId, requestId, name, quantity, price));
+            orders.Add(new request(clientId, requestId, name, quantity, price));
 
         }
         /// <summary>
@@ -98,11 +104,11 @@ namespace CoreServicesBootCamp
         {
             return orders.Count();
         }
-        public List<Order> getOrders()
+        public List<request> getOrders()
         {
             return orders;
         }
-        public void setOrders(List<Order> orders)
+        public void setOrders(List<request> orders)
         {
             this.orders=orders;
         }

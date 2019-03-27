@@ -4,9 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using System.Xml;
-using static CoreServicesBootCamp.Order;
+using System.Xml.Serialization;
+using static CoreServicesBootCamp.request;
 
 namespace CoreServicesBootCamp
 {
@@ -85,47 +87,18 @@ namespace CoreServicesBootCamp
 
         private void xmlReader(string file)
         {
-            XmlReaderSettings settings = new XmlReaderSettings();
-            settings.DtdProcessing = DtdProcessing.Parse;
-            XmlReader reader = XmlReader.Create(file, settings);
-
-            reader.MoveToContent();
-            // Parse the file and display each of the nodes.
-            while (reader.Read())
+            string xmlString = File.ReadAllText(file, Encoding.UTF8);
+            StringReader strreader = new StringReader(xmlString);
+            XmlSerializer ser = new XmlSerializer(typeof(List<request>), new XmlRootAttribute("requests"));
+            List<request> orders = 
+                (List<request>)ser.Deserialize(strreader);
+            foreach(request or in orders)
             {
-                switch (reader.NodeType)
-                {
-                    case XmlNodeType.Element:
-                        Console.Write("<{0}>", reader.Name);
-                        break;
-                    case XmlNodeType.Text:
-                        Console.Write(reader.Value);
-                        break;
-                    case XmlNodeType.CDATA:
-                        Console.Write("<![CDATA[{0}]]>", reader.Value);
-                        break;
-                    case XmlNodeType.ProcessingInstruction:
-                        Console.Write("<?{0} {1}?>", reader.Name, reader.Value);
-                        break;
-                    case XmlNodeType.Comment:
-                        Console.Write("<!--{0}-->", reader.Value);
-                        break;
-                    case XmlNodeType.XmlDeclaration:
-                        Console.Write("<?xml version='1.0'?>");
-                        break;
-                    case XmlNodeType.Document:
-                        break;
-                    case XmlNodeType.DocumentType:
-                        Console.Write("<!DOCTYPE {0} [{1}]", reader.Name, reader.Value);
-                        break;
-                    case XmlNodeType.EntityReference:
-                        Console.Write(reader.Name);
-                        break;
-                    case XmlNodeType.EndElement:
-                        Console.Write("</{0}>", reader.Name);
-                        break;
-                }
+                database.createOrder(or);
             }
+            strreader.Close();
+            refreshData();
+           
         }
 
         /// <summary>
@@ -156,9 +129,9 @@ namespace CoreServicesBootCamp
 
         private void refreshData()
         {
-             List<Order> listOfOrders = database.getOrders();
+             List<request> listOfOrders = database.getOrders();
 
-             foreach (Order it in listOfOrders)
+             foreach (request it in listOfOrders)
              {
                  DataGridViewRow row = (DataGridViewRow) dataGridView1.RowTemplate.Clone();
                 row.CreateCells(dataGridView1, it.getClientId(), it.getRequestId(), it.getName(), it.getQuantity(), it.getPrice());

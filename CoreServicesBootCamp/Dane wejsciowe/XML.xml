@@ -1,8 +1,8 @@
-<requests>
+﻿<requests>
  <request>
  <clientId>1</clientId>
  <requestId>1</requestId>
- <name>Bu�ka</name>
+ <name>Bułka</name>
  <quantity>1</quantity>
  <price>10.00</price>
  </request>
