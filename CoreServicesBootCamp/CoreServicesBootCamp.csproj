@@ -39,6 +39,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <LangVersion>default</LangVersion>
+    <DocumentationFile>Instrukcja, opis i dokumentacja\CoreServicesBootCamp - Dokumentacja.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -108,8 +109,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\fileReaders.cs" />
     <Compile Include="Classes\InMemoryDatabase.cs" />
+    <Compile Include="Classes\Readers\CsvReader.cs" />
+    <Compile Include="Classes\Readers\JsonReader.cs" />
+    <Compile Include="Classes\Readers\XmlReader.cs" />
     <Compile Include="mainWindow.cs">
       <SubType>Form</SubType>
     </Compile>

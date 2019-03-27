@@ -1,0 +1,241 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CoreServicesBootCamp</name>
+    </assembly>
+    <members>
+        <member name="M:CoreServicesBootCamp.InMemoryDatabase.addOrders(CoreServicesBootCamp.InMemoryDatabase)">
+            <summary>
+            Dodaj baze do bazy
+            </summary>
+            <param name="inMemoryDatabase"></param>
+        </member>
+        <member name="M:CoreServicesBootCamp.InMemoryDatabase.createOrder(CoreServicesBootCamp.request)">
+            <summary>
+            Przypisz obiekt typu request do listy request.
+            </summary>
+            <param name="order"></param>
+        </member>
+        <member name="M:CoreServicesBootCamp.InMemoryDatabase.createOrder(System.String,System.UInt64,System.String,System.UInt32,System.Double)">
+            <summary>
+            Stwórz obiekt typu request i dodaj do listy request.
+            </summary>
+            <param name="clientId"></param>
+            <param name="requestId"></param>
+            <param name="name"></param>
+            <param name="quantity"></param>
+            <param name="price"></param>
+        </member>
+        <member name="M:CoreServicesBootCamp.InMemoryDatabase.getAmountOfOrders">
+            <summary>
+            Metoda zwraca ilość zamówień przechowywanych w bazie.
+            </summary>
+            <returns>int</returns>
+        </member>
+        <member name="M:CoreServicesBootCamp.InMemoryDatabase.getOrders">
+            <summary>
+            Zwróć listę obiektów typu request
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CoreServicesBootCamp.InMemoryDatabase.setOrders(System.Collections.Generic.List{CoreServicesBootCamp.request})">
+            <summary>
+            Ustaw listę obiektów request na inną listę.
+            </summary>
+            <param name="orders"></param>
+        </member>
+        <member name="M:CoreServicesBootCamp.InMemoryDatabase.clearOrders">
+            <summary>
+            Wyczyść listę obiektów typu request.
+            </summary>
+        </member>
+        <member name="M:CoreServicesBootCamp.InMemoryDatabase.clientExists(System.String)">
+            <summary>
+            Sprawdź, czy klient o podanym Id istnieje w bazie.
+            </summary>
+            <param name="clientId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreServicesBootCamp.InMemoryDatabase.getAmountOfRequests">
+            <summary>
+            Zwróć liczbę zamówień w liście (obiektów typu request).
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CoreServicesBootCamp.InMemoryDatabase.getClientAmountOfRequests(System.String)">
+            <summary>
+            Zwróć liczbę zamówień w liście (obiektów typu request) przypisaną do konkretnego id klienta.
+            </summary>
+            <param name="clientId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreServicesBootCamp.InMemoryDatabase.getTotalPrice">
+            <summary>
+            Zlicz całkowitą wartość produktów z zamówienia
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CoreServicesBootCamp.InMemoryDatabase.getClientTotalPrice(System.String)">
+            <summary>
+            Zlicz całkowitą wartość produktów z zamówienia przypisaną do konkretnego id klienta.
+            </summary>
+            <param name="clientId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreServicesBootCamp.InMemoryDatabase.check">
+            <summary>
+            Sprawdź poprawność danych w bazie, usuń błędy.
+            </summary>
+        </member>
+        <member name="M:CoreServicesBootCamp.Classes.Readers.CsvReader.csvReader(System.String)">
+            <summary>
+            Czytnik plików CSV, wykorzystujący bibliotekę CsvHelper
+            </summary>
+        </member>
+        <member name="M:CoreServicesBootCamp.Classes.Readers.JsonReader.jsonReader(System.String)">
+            <summary>
+            Czytnik plików JSON.
+            </summary>
+        </member>
+        <member name="M:CoreServicesBootCamp.Classes.Readers.XmlReader.xmlReader(System.String)">
+            <summary>
+            Czytnik plików XML.
+            </summary>
+        </member>
+        <member name="M:CoreServicesBootCamp.mainWindow.loadFiles">
+            <summary>
+            Funkcja wczytująca informacje z plików *.csv, *.xml, *.json do bazy InMemoryDatabase przez okno dialogowe
+            </summary>
+        </member>
+        <member name="M:CoreServicesBootCamp.mainWindow.refreshData">
+            <summary>
+            Funkcja odświeża dane zawarte w datagridView1, który wyświetla zawartość całej bazy.
+            </summary>
+        </member>
+        <member name="M:CoreServicesBootCamp.mainWindow.wyczyśćBazęToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Funkcja czyszcząca bazę danych oraz wyświetlanie w dataGridView'ach
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CoreServicesBootCamp.mainWindow.button1_Click(System.Object,System.EventArgs)">
+            <summary>
+            Obsługa przycisku do generowania raportów.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CoreServicesBootCamp.mainWindow.ilośćZamówieńToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Ilosc zamowien
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CoreServicesBootCamp.mainWindow.ilośćZamówieńDlaKlientaToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Ilosc zamowien dla klienta o wskazanym id.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CoreServicesBootCamp.mainWindow.cToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Łączna kwota zamówień
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CoreServicesBootCamp.mainWindow.łToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Łączna kwota zamówień dla klienta o wskazanym id.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CoreServicesBootCamp.mainWindow.listaZamówieńDlaKlientaToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Lista zamowien dla klienta o id.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CoreServicesBootCamp.mainWindow.ilośćZamówieńpoNazwieToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Ilosc zamowien, sortowane po nazwie przedmiotów.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CoreServicesBootCamp.mainWindow.ilośćZamówieńDlaKlientapoNazwieToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Ilosc zamowien dla klienta o wskazanym id, sortowane po nazwie przedmiotów.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CoreServicesBootCamp.mainWindow.zamówieniaWPodanymPrzedzialeCenowymToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Zamówienia w podanym przedziale cenowym.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:CoreServicesBootCamp.mainWindow.components">
+            <summary>
+            Wymagana zmienna projektanta.
+            </summary>
+        </member>
+        <member name="M:CoreServicesBootCamp.mainWindow.Dispose(System.Boolean)">
+            <summary>
+            Wyczyść wszystkie używane zasoby.
+            </summary>
+            <param name="disposing">prawda, jeżeli zarządzane zasoby powinny zostać zlikwidowane; Fałsz w przeciwnym wypadku.</param>
+        </member>
+        <member name="M:CoreServicesBootCamp.mainWindow.InitializeComponent">
+            <summary>
+            Metoda wymagana do obsługi projektanta — nie należy modyfikować
+            jej zawartości w edytorze kodu.
+            </summary>
+        </member>
+        <member name="M:CoreServicesBootCamp.Program.Main">
+            <summary>
+            Główny punkt wejścia dla aplikacji.
+            </summary>
+        </member>
+        <member name="F:CoreServicesBootCamp.RangeSelector.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CoreServicesBootCamp.RangeSelector.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CoreServicesBootCamp.RangeSelector.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:CoreServicesBootCamp.Properties.Resources">
+            <summary>
+              Silnie typizowana klasa zasobów do wyszukiwania zlokalizowanych ciągów itd.
+            </summary>
+        </member>
+        <member name="P:CoreServicesBootCamp.Properties.Resources.ResourceManager">
+            <summary>
+              Zwraca buforowane wystąpienie składnika ResourceManager używane przez tę klasę.
+            </summary>
+        </member>
+        <member name="P:CoreServicesBootCamp.Properties.Resources.Culture">
+            <summary>
+              Przesłania właściwość CurrentUICulture bieżącego wątku dla wszystkich
+              przypadków przeszukiwania zasobów za pomocą tej silnie typizowanej klasy zasobów.
+            </summary>
+        </member>
+    </members>
+</doc>

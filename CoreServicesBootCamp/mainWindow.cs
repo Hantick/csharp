@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Windows.Forms;
-using System.Xml.Serialization;
-using Newtonsoft.Json;
 using System.ComponentModel;
-using Microsoft.VisualBasic;
+using CoreServicesBootCamp.Classes.Readers;
 
 namespace CoreServicesBootCamp
 {
     public partial class mainWindow : Form
     {
         InMemoryDatabase database;
-        fileReaders filereaders;
         public mainWindow()
         {
             InitializeComponent();
@@ -23,11 +19,12 @@ namespace CoreServicesBootCamp
             refreshData();
         }
 
-        #region Wczytywanie plików
+        
         private void wczytajBazęToolStripMenuItem_Click(object sender, EventArgs e)
         {
             loadFiles();
         }
+        #region Wczytywanie plików
         /// <summary>
         /// Funkcja wczytująca informacje z plików *.csv, *.xml, *.json do bazy InMemoryDatabase przez okno dialogowe
         /// </summary>
@@ -57,17 +54,20 @@ namespace CoreServicesBootCamp
                             {
                                 if (file.Contains(".csv"))
                                 {
-                                    database.addOrders(filereaders.csvReader(file));
+                                    CsvReader csvrdr = new CsvReader();
+                                    database.addOrders(csvrdr.csvReader(file));
                                     refreshData();
                                 }
                                 else if (file.Contains(".xml"))
                                 {
-                                    filereaders.xmlReader(file);
+                                    XmlReader xmlrdr = new XmlReader();
+                                    database.addOrders(xmlrdr.xmlReader(file));
                                     refreshData();
                                 }
                                 else if (file.Contains(".json"))
                                 {
-                                    filereaders.jsonReader(file);
+                                    JsonReader jsonrdr = new JsonReader();
+                                    database.addOrders(jsonrdr.jsonReader(file));
                                     refreshData();
                                 }
                                 // fileContent = reader.ReadToEnd();
@@ -89,7 +89,9 @@ namespace CoreServicesBootCamp
             }
         }
         #endregion
-
+        /// <summary>
+        /// Funkcja odświeża dane zawarte w datagridView1, który wyświetla zawartość całej bazy.
+        /// </summary>
         private void refreshData()
         {
 
@@ -173,7 +175,7 @@ namespace CoreServicesBootCamp
 
 
         //************************************************************************************************************
-        //FUNKCJE GENERUJĄCE RAPORTY
+        //  FUNKCJE GENERUJĄCE RAPORTY
         //************************************************************************************************************
         #region IloscZamowien raport         
 
