@@ -184,15 +184,47 @@ namespace CoreServicesBootCamp
             refreshData();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)  
         {
-
         }
+        /// <summary>
+        /// Obsługa przycisku do generowania raportów.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int index = comboBox1.SelectedIndex;
+            switch (index)
+            {
+                case 0:
+                    ilośćZamówieńToolStripMenuItem_Click(sender, e);
+                    break;
+                case 1:
+                    ilośćZamówieńDlaKlientaToolStripMenuItem_Click(sender, e);
+                    break;
+                case 2:
+                    cToolStripMenuItem_Click(sender, e);
+                    break;
+                case 3:
+                    łToolStripMenuItem_Click(sender, e);
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 10:
+                    zamówieniaWPodanymPrzedzialeCenowymToolStripMenuItem_Click(sender, e);
+                    break;
+            }
+        }
+
+
         //************************************************************************************************************
         //FUNKCJE GENERUJĄCE RAPORTY
         //************************************************************************************************************
         #region IloscZamowien raport         
-        
+
         /// <summary>
         /// Ilosc zamowien
         /// </summary>
@@ -292,13 +324,57 @@ namespace CoreServicesBootCamp
 
             }
         }
-            #endregion
-            /// <summary>
-            /// Ilosc zamowien, sortowane po nazwie przedmiotów.
-            /// </summary>
-            /// <param name="sender"></param>
-            /// <param name="e"></param>
-            private void ilośćZamówieńpoNazwieToolStripMenuItem_Click(object sender, EventArgs e)
+        #endregion
+        #region ŁącznaKwotaZamowien dla klienta o id raport
+        /// <summary>
+        /// Łączna kwota zamówień dla klienta o wskazanym id.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void łToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            comboBox1.SelectedIndex = -1;
+            dataGridView2.Rows.Clear();
+            dataGridView2.Columns.Clear();
+            List<request> listOfOrders = database.getOrders();
+            if (listOfOrders.Count == 0)
+            {
+                MessageBox.Show(this, "{0} Baza danych jest pusta! Nie można wygenerować raportu", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                String clientId = Microsoft.VisualBasic.Interaction.InputBox("Podaj ID klienta, którego ilość zamówień chcesz wyświetlić", "Generowanie raportu ilości zamówień dla klienta...", "0");
+                if (clientId.Equals(""))
+                {
+
+                    return;
+                }
+                else if (database.clientExists(clientId) == false)
+                {
+                    MessageBox.Show(this, "{0} Podane Client_Id nie istnieje w bazie! Upewnij się, że wprowadziłeś odpowiednią liczbę.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                comboBox1.SelectedIndex = 1;
+                dataGridView2.AutoGenerateColumns = false;
+                dataGridView2.Columns.Add("quantity", "Quantity");
+                DataGridViewRow row = (DataGridViewRow)dataGridView2.RowTemplate.Clone();
+                row.CreateCells(dataGridView2, database.getClientTotalPrice(clientId));
+                dataGridView2.Rows.Add(row);
+            }
+        }
+        #endregion
+
+
+
+
+        #region IloscZamowien z sortowaniem raport
+        /// <summary>
+        /// Ilosc zamowien, sortowane po nazwie przedmiotów.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ilośćZamówieńpoNazwieToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dataGridView2.Rows.Clear();
             dataGridView2.Columns.Clear();
@@ -348,9 +424,8 @@ namespace CoreServicesBootCamp
                 dataGridView2.Sort(dataGridView2.Columns["name"], ListSortDirection.Ascending);
             }
         }
-        
-
-
+        #endregion
+        #region IloscZamowien dla klienta o id z sortowaniem raport
         /// <summary>
         /// Ilosc zamowien dla klienta o wskazanym id, sortowane po nazwie przedmiotów.
         /// </summary>
@@ -417,5 +492,25 @@ namespace CoreServicesBootCamp
                 dataGridView2.Sort(dataGridView2.Columns["name"], ListSortDirection.Ascending);
             }
         }
+        #endregion
+        #region ZamówieniaWPodanymPrzedziale raport
+        /// <summary>
+        /// Zamówienia w podanym przedziale cenowym.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void zamówieniaWPodanymPrzedzialeCenowymToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RangeSelector selector = new RangeSelector();
+            selector.Owner = this;
+            selector.ShowDialog();
+            double min;
+            double max;
+            //min = selector.Check;
+        }
+
+        #endregion
+
+
     }
 }

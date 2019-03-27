@@ -34,6 +34,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.programToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wczytajBazęToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wyczyśćBazęToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pokażRaportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ilośćZamówieńToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ilośćZamówieńDlaKlientaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,8 +56,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.sortujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.wyczyśćBazęToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
@@ -69,8 +68,7 @@
             this.menuStrip1.BackColor = System.Drawing.Color.Teal;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.programToolStripMenuItem,
-            this.pokażRaportToolStripMenuItem,
-            this.sortujToolStripMenuItem});
+            this.pokażRaportToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(868, 24);
@@ -93,6 +91,13 @@
             this.wczytajBazęToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.wczytajBazęToolStripMenuItem.Text = "Wczytaj pliki...";
             this.wczytajBazęToolStripMenuItem.Click += new System.EventHandler(this.wczytajBazęToolStripMenuItem_Click);
+            // 
+            // wyczyśćBazęToolStripMenuItem
+            // 
+            this.wyczyśćBazęToolStripMenuItem.Name = "wyczyśćBazęToolStripMenuItem";
+            this.wyczyśćBazęToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.wyczyśćBazęToolStripMenuItem.Text = "Wyczyść bazę";
+            this.wyczyśćBazęToolStripMenuItem.Click += new System.EventHandler(this.wyczyśćBazęToolStripMenuItem_Click);
             // 
             // pokażRaportToolStripMenuItem
             // 
@@ -143,6 +148,7 @@
             this.łToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+D";
             this.łToolStripMenuItem.Size = new System.Drawing.Size(356, 22);
             this.łToolStripMenuItem.Text = "Łączna kwota zamówień dla klienta...";
+            this.łToolStripMenuItem.Click += new System.EventHandler(this.łToolStripMenuItem_Click);
             // 
             // listaWszystkichZamówieńToolStripMenuItem
             // 
@@ -194,6 +200,7 @@
             this.zamówieniaWPodanymPrzedzialeCenowymToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.K)));
             this.zamówieniaWPodanymPrzedzialeCenowymToolStripMenuItem.Size = new System.Drawing.Size(356, 22);
             this.zamówieniaWPodanymPrzedzialeCenowymToolStripMenuItem.Text = "Zamówienia w podanym przedziale cenowym";
+            this.zamówieniaWPodanymPrzedzialeCenowymToolStripMenuItem.Click += new System.EventHandler(this.zamówieniaWPodanymPrzedzialeCenowymToolStripMenuItem_Click);
             // 
             // dataGridView1
             // 
@@ -290,6 +297,7 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "Pokaż raport";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -304,19 +312,6 @@
             this.label2.Size = new System.Drawing.Size(154, 24);
             this.label2.TabIndex = 6;
             this.label2.Text = "Dostępne raporty";
-            // 
-            // sortujToolStripMenuItem
-            // 
-            this.sortujToolStripMenuItem.Name = "sortujToolStripMenuItem";
-            this.sortujToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.sortujToolStripMenuItem.Text = "Sortuj";
-            // 
-            // wyczyśćBazęToolStripMenuItem
-            // 
-            this.wyczyśćBazęToolStripMenuItem.Name = "wyczyśćBazęToolStripMenuItem";
-            this.wyczyśćBazęToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.wyczyśćBazęToolStripMenuItem.Text = "Wyczyść bazę";
-            this.wyczyśćBazęToolStripMenuItem.Click += new System.EventHandler(this.wyczyśćBazęToolStripMenuItem_Click);
             // 
             // comboBox1
             // 
@@ -340,6 +335,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(290, 27);
             this.comboBox1.TabIndex = 8;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_1);
             // 
             // dataGridView2
             // 
@@ -422,7 +418,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ToolStripMenuItem sortujToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wyczyśćBazęToolStripMenuItem;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridView dataGridView2;

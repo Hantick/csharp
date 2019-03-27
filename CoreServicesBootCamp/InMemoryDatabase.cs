@@ -134,5 +134,24 @@ namespace CoreServicesBootCamp
             }
             return count;
         }
+        public double getTotalPrice()
+        {
+            double price=0;
+            foreach(request req in orders)
+            {
+                price+=req.getQuantity() * req.getPrice();
+            }
+            return price;
+        }
+        public double getClientTotalPrice(String clientId)
+        {
+            double price = 0;
+            foreach (request req in orders)
+            {
+                if(req.getClientId()==clientId)
+                price += req.getQuantity() * req.getPrice();
+            }
+            return price;
+        }
     }
 }
