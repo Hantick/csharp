@@ -61,17 +61,7 @@ namespace CoreServicesBootCamp
             this.quantity = quantity;
             this.price = price;
         }
-    /*   public class OrderMapper : ClassMap<Order>
-        {
-            public OrderMapper()
-            {
-                Map(x => x.clientId).Name("Client_Id").Index(0);
-                Map(x => x.requestId).Name("Request_id").Index(1);
-                Map(x => x.name).Name("Name").Index(2);
-                Map(x => x.quantity).Name("Quantity").Index(3);
-                Map(x => x.price).Name("Price").Index(4);
-            }
-        }*/
+        
 
     }
 
@@ -115,6 +105,34 @@ namespace CoreServicesBootCamp
         public void clearOrders()
         {
             orders.Clear();
+        }
+        public bool clientExists(String clientId)
+        {
+            foreach (request req in orders)
+            {
+                if (req.getClientId() == clientId)
+                    return true;
+            }
+            return false;
+        }
+        public uint getAmountOfRequests()
+        {
+            uint count=0;
+            foreach(request req in orders)
+            {
+                count += req.getQuantity();
+            }
+            return count;
+        }
+        public uint getClientAmountOfRequests(String clientId)
+        {
+            uint count = 0;
+            foreach (request req in orders)
+            {
+                if(req.getClientId() == clientId)
+                count += req.getQuantity();
+            }
+            return count;
         }
     }
 }

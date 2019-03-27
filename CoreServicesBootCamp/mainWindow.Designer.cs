@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainWindow));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.programToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,12 +55,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.sortujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wyczyśćBazęToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -124,6 +126,7 @@
             this.ilośćZamówieńDlaKlientaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
             this.ilośćZamówieńDlaKlientaToolStripMenuItem.Size = new System.Drawing.Size(356, 22);
             this.ilośćZamówieńDlaKlientaToolStripMenuItem.Text = "Ilość zamówień dla klienta...";
+            this.ilośćZamówieńDlaKlientaToolStripMenuItem.Click += new System.EventHandler(this.ilośćZamówieńDlaKlientaToolStripMenuItem_Click);
             // 
             // cToolStripMenuItem
             // 
@@ -132,6 +135,7 @@
             this.cToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
             this.cToolStripMenuItem.Size = new System.Drawing.Size(356, 22);
             this.cToolStripMenuItem.Text = "Łączna kwota zamówień";
+            this.cToolStripMenuItem.Click += new System.EventHandler(this.cToolStripMenuItem_Click);
             // 
             // łToolStripMenuItem
             // 
@@ -174,6 +178,7 @@
             this.ilośćZamówieńpoNazwieToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
             this.ilośćZamówieńpoNazwieToolStripMenuItem.Size = new System.Drawing.Size(356, 22);
             this.ilośćZamówieńpoNazwieToolStripMenuItem.Text = "Ilość zamówień [po nazwie]";
+            this.ilośćZamówieńpoNazwieToolStripMenuItem.Click += new System.EventHandler(this.ilośćZamówieńpoNazwieToolStripMenuItem_Click);
             // 
             // ilośćZamówieńDlaKlientapoNazwieToolStripMenuItem
             // 
@@ -181,6 +186,7 @@
             this.ilośćZamówieńDlaKlientapoNazwieToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.J)));
             this.ilośćZamówieńDlaKlientapoNazwieToolStripMenuItem.Size = new System.Drawing.Size(356, 22);
             this.ilośćZamówieńDlaKlientapoNazwieToolStripMenuItem.Text = "Ilość zamówień dla klienta... [po nazwie]";
+            this.ilośćZamówieńDlaKlientapoNazwieToolStripMenuItem.Click += new System.EventHandler(this.ilośćZamówieńDlaKlientapoNazwieToolStripMenuItem_Click);
             // 
             // zamówieniaWPodanymPrzedzialeCenowymToolStripMenuItem
             // 
@@ -299,16 +305,6 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Dostępne raporty";
             // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox1.Location = new System.Drawing.Point(12, 102);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(441, 285);
-            this.textBox1.TabIndex = 7;
-            // 
             // sortujToolStripMenuItem
             // 
             this.sortujToolStripMenuItem.Name = "sortujToolStripMenuItem";
@@ -331,11 +327,46 @@
             this.comboBox1.Items.AddRange(new object[] {
             "Ilość zamówień",
             "Ilość zamówień dla klienta...",
-            "Łączna ilość zamówień"});
+            "Łączna kwota zamówień",
+            "Łączna kwota zamówień dla klienta...",
+            "Lista wszystkich zamówień",
+            "Lista zamówień dla klienta...",
+            "Średnia wartość zamówienia",
+            "Średnia wartość zamówienia dla klienta...",
+            "Ilość zamówień [po nazwie]",
+            "Ilość zamówień dla klienta... [po nazwie]",
+            "Zamówienia w podanym przedziale cenowym"});
             this.comboBox1.Location = new System.Drawing.Point(12, 62);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(290, 27);
             this.comboBox1.TabIndex = 8;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AllowUserToResizeColumns = false;
+            this.dataGridView2.AllowUserToResizeRows = false;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.AntiqueWhite;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.AntiqueWhite;
+            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridView2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dataGridView2.GridColor = System.Drawing.Color.DarkSlateGray;
+            this.dataGridView2.Location = new System.Drawing.Point(12, 108);
+            this.dataGridView2.MultiSelect = false;
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView2.Size = new System.Drawing.Size(441, 279);
+            this.dataGridView2.TabIndex = 9;
             // 
             // mainWindow
             // 
@@ -343,8 +374,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(868, 399);
+            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
@@ -358,6 +389,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -390,10 +422,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ToolStripMenuItem sortujToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wyczyśćBazęToolStripMenuItem;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DataGridView dataGridView2;
     }
 }
 
