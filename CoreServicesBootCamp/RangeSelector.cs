@@ -12,8 +12,9 @@ namespace CoreServicesBootCamp
 {
     public partial class RangeSelector : Form
     {
-        public double min;
-        public double max;
+        public double min { get; set; }
+        public double max { get; set; }
+
         public event Action<double> Check;
 
 
@@ -25,10 +26,12 @@ namespace CoreServicesBootCamp
             this.textBoxMAX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(textBoxMIN_KeyPress);
         }
 
+
+
         private void textBoxMIN_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-        (e.KeyChar != '.'))
+        (e.KeyChar != ','))
             {
                 e.Handled = true;
             }
@@ -61,8 +64,10 @@ namespace CoreServicesBootCamp
         {
             min = double.Parse(textBoxMIN.Text);
             max = double.Parse(textBoxMAX.Text);
-
+            this.DialogResult = DialogResult.OK;
+            this.Owner.Enabled = true;
             this.Close();
+
         }
     }
 

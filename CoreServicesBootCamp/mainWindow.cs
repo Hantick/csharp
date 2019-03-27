@@ -65,9 +65,9 @@ namespace CoreServicesBootCamp
                                 {
                                     jsonReader(file);
                                 }
-                               // fileContent = reader.ReadToEnd();
+                                // fileContent = reader.ReadToEnd();
 
-                             //   MessageBox.Show(fileContent, "Ładowanie: " + file, MessageBoxButtons.OK);
+                                //   MessageBox.Show(fileContent, "Ładowanie: " + file, MessageBoxButtons.OK);
                             }
                         }
                     }
@@ -83,15 +83,16 @@ namespace CoreServicesBootCamp
             }
         }
 
-        struct tmp {
-           public List<request> requests { get; set; }
+        struct tmp
+        {
+            public List<request> requests { get; set; }
         };
         /// <summary>
         /// Czytnik plików JSON.
         /// </summary>
         private void jsonReader(string file)
         {
-            
+
             string jsonString = File.ReadAllText(file, Encoding.UTF8);
             tmp requests = JsonConvert.DeserializeObject<tmp>(jsonString);
             foreach (request req in requests.requests)
@@ -108,15 +109,15 @@ namespace CoreServicesBootCamp
             string xmlString = File.ReadAllText(file, Encoding.UTF8);
             StringReader strreader = new StringReader(xmlString);
             XmlSerializer ser = new XmlSerializer(typeof(List<request>), new XmlRootAttribute("requests"));
-            List<request> orders = 
+            List<request> orders =
                 (List<request>)ser.Deserialize(strreader);
-            foreach(request or in orders)
+            foreach (request or in orders)
             {
                 database.createOrder(or);
             }
             strreader.Close();
             refreshData();
-           
+
         }
 
         /// <summary>
@@ -128,9 +129,9 @@ namespace CoreServicesBootCamp
             using (var csv = new CsvHelper.CsvReader(reader))
             {
 
-               // csv.Configuration.RegisterClassMap<OrderMapper>();
+                // csv.Configuration.RegisterClassMap<OrderMapper>();
                 csv.Configuration.HasHeaderRecord = true;
-               // csv.Configuration.MissingFieldFound = null;
+                // csv.Configuration.MissingFieldFound = null;
                 csv.Configuration.Delimiter = ",";
                 csv.Read();
                 csv.ReadHeader();
@@ -147,27 +148,27 @@ namespace CoreServicesBootCamp
 
         private void refreshData()
         {
-            
-             List<request> listOfOrders = database.getOrders();
-            if(listOfOrders.Count!=0)
+
+            List<request> listOfOrders = database.getOrders();
+            if (listOfOrders.Count != 0)
             {
                 comboBox1.Enabled = true;
             }
             dataGridView1.Rows.Clear();
             foreach (request it in listOfOrders)
-             {
-                 DataGridViewRow row = (DataGridViewRow) dataGridView1.RowTemplate.Clone();
+            {
+                DataGridViewRow row = (DataGridViewRow)dataGridView1.RowTemplate.Clone();
                 row.CreateCells(dataGridView1, it.getClientId(), it.getRequestId(), it.getName(), it.getQuantity(), it.getPrice());
                 dataGridView1.Rows.Add(row);
 
-             }
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-  
+
         /// <summary>
         /// Funkcja czyszcząca bazę danych oraz wyświetlanie w dataGridView'ach
         /// </summary>
@@ -176,7 +177,7 @@ namespace CoreServicesBootCamp
         private void wyczyśćBazęToolStripMenuItem_Click(object sender, EventArgs e)
         {
             comboBox1.SelectedIndex = -1;
-           
+
             database.clearOrders();
             dataGridView2.Rows.Clear();
             dataGridView2.Columns.Clear();
@@ -184,7 +185,7 @@ namespace CoreServicesBootCamp
             refreshData();
         }
 
-        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)  
+        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
         }
         /// <summary>
@@ -274,9 +275,9 @@ namespace CoreServicesBootCamp
             else
             {
                 String clientId = Microsoft.VisualBasic.Interaction.InputBox("Podaj ID klienta, którego ilość zamówień chcesz wyświetlić", "Generowanie raportu ilości zamówień dla klienta...", "0");
-                if(clientId.Equals(""))
+                if (clientId.Equals(""))
                 {
-                    
+
                     return;
                 }
                 else if (database.clientExists(clientId) == false)
@@ -291,7 +292,7 @@ namespace CoreServicesBootCamp
                 row.CreateCells(dataGridView2, database.getClientAmountOfRequests(clientId));
                 dataGridView2.Rows.Add(row);
 
-                
+
             }
         }
         #endregion
@@ -378,7 +379,7 @@ namespace CoreServicesBootCamp
         {
             dataGridView2.Rows.Clear();
             dataGridView2.Columns.Clear();
-            
+
             List<request> listOfOrders = database.getOrders();
             if (listOfOrders.Count == 0)
             {
@@ -391,7 +392,7 @@ namespace CoreServicesBootCamp
                 dataGridView2.AutoGenerateColumns = false;
                 dataGridView2.Columns.Add("name", "Name");
                 dataGridView2.Columns.Add("quantity", "Quantity");
-                
+
                 List<String> products = new List<String>();
                 String tmp;
                 //Odseparowanie różnych produktów
@@ -501,16 +502,47 @@ namespace CoreServicesBootCamp
         /// <param name="e"></param>
         private void zamówieniaWPodanymPrzedzialeCenowymToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            comboBox1.SelectedIndex = -1;
+            dataGridView2.Rows.Clear();
+            dataGridView2.Columns.Clear();
+            List<request> listOfOrders = database.getOrders();
+            if (listOfOrders.Count == 0)
+            {
+                MessageBox.Show(this, "{0} Baza danych jest pusta! Nie można wygenerować raportu", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             RangeSelector selector = new RangeSelector();
             selector.Owner = this;
-            selector.ShowDialog();
             double min;
             double max;
-            //min = selector.Check;
+
+            var result = selector.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                min = selector.min;
+                max = selector.max;
+                selector.Close();
+            }
+            else
+            {
+                return;
+            }
+            comboBox1.SelectedIndex = 10;
+            dataGridView2.AutoGenerateColumns = false;
+            dataGridView2.Columns.Add("name", "Name");
+            dataGridView2.Columns.Add("quantity", "Quantity");
+            dataGridView2.Columns.Add("price", "Price");
+            foreach (request req in listOfOrders)
+            {
+                if(req.getPrice()>=min && req.getPrice()<=max)
+                {
+                    DataGridViewRow row = (DataGridViewRow)dataGridView2.RowTemplate.Clone();
+                    row.CreateCells(dataGridView2, req.getName(),req.getQuantity(),req.getPrice());
+                    dataGridView2.Rows.Add(row);
+                }
+            }
         }
-
         #endregion
-
-
     }
 }

@@ -101,7 +101,7 @@ namespace CoreServicesBootCamp
             this.AcceptButton = this.button_ok;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Bisque;
+            this.BackColor = System.Drawing.Color.Linen;
             this.CancelButton = this.button_cancel;
             this.ClientSize = new System.Drawing.Size(120, 97);
             this.Controls.Add(this.label3);
