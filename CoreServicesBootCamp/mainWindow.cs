@@ -63,9 +63,9 @@ namespace CoreServicesBootCamp
                                 {
                                     jsonReader(file);
                                 }
-                                fileContent = reader.ReadToEnd();
+                               // fileContent = reader.ReadToEnd();
 
-                                MessageBox.Show(fileContent, "Ładowanie: " + file, MessageBoxButtons.OK);
+                             //   MessageBox.Show(fileContent, "Ładowanie: " + file, MessageBoxButtons.OK);
                             }
                         }
                     }
@@ -145,9 +145,14 @@ namespace CoreServicesBootCamp
 
         private void refreshData()
         {
+            
              List<request> listOfOrders = database.getOrders();
-
-             foreach (request it in listOfOrders)
+            if(listOfOrders.Count!=0)
+            {
+                comboBox1.Enabled = true;
+            }
+            dataGridView1.Rows.Clear();
+            foreach (request it in listOfOrders)
              {
                  DataGridViewRow row = (DataGridViewRow) dataGridView1.RowTemplate.Clone();
                 row.CreateCells(dataGridView1, it.getClientId(), it.getRequestId(), it.getName(), it.getQuantity(), it.getPrice());
@@ -157,6 +162,58 @@ namespace CoreServicesBootCamp
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void ilośćZamówieńToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            textBox1.Clear();
+           List<request> listOfOrders = database.getOrders();
+            if (listOfOrders.Count == 0)
+            {
+                MessageBox.Show(this, "{0} Baza danych jest pusta! Nie można wygenerować raportu", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                textBox1.AppendText("Raport ilości zamówień:\n");
+               
+                List<String> products = new List<String>();
+                String tmp;
+                //Odseparowanie różnych produktów
+                foreach (request req in listOfOrders)
+                {
+                    tmp = req.getName();
+                    if (products.Contains(tmp) == false)
+                        products.Add(tmp);
+                }
+                //Sprawdź każdy produkt, ile sie zawiera
+                uint count = 0;
+                foreach (String str in products)
+                {
+                    count = 0;
+                    foreach (request req in listOfOrders)
+                    {
+                        if (req.getName() == str)
+                        {
+                            count += req.getQuantity();
+                        }
+                    }
+                    textBox1.AppendText(str + ", ilość: " + count+"\n");
+
+                }
+            }
+        }
+
+        private void wyczyśćBazęToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            database.clearOrders();
+            dataGridView1.Rows.Clear();
+            refreshData();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

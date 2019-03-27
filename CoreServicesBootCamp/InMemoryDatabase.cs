@@ -86,13 +86,13 @@ namespace CoreServicesBootCamp
         }
         public void createOrder(request order)
         {
-            // var tmp = new Order(clientId, requestId, name, quantity, price);
+            
             orders.Add(order);
 
         }
         public void createOrder(String clientId, ulong requestId, String name, uint quantity, double price)
         {
-           // var tmp = new Order(clientId, requestId, name, quantity, price);
+           
             orders.Add(new request(clientId, requestId, name, quantity, price));
 
         }
@@ -111,6 +111,10 @@ namespace CoreServicesBootCamp
         public void setOrders(List<request> orders)
         {
             this.orders=orders;
+        }
+        public void clearOrders()
+        {
+            orders.Clear();
         }
     }
 }
