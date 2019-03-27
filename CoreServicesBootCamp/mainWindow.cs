@@ -1,14 +1,10 @@
-﻿
-using CsvHelper;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Xml;
 using System.Xml.Serialization;
-using static CoreServicesBootCamp.request;
+using Newtonsoft.Json;
 
 namespace CoreServicesBootCamp
 {
@@ -65,7 +61,7 @@ namespace CoreServicesBootCamp
                                 }
                                 else if (file.Contains(".json"))
                                 {
-                                    //jsonReader(file);
+                                    jsonReader(file);
                                 }
                                 fileContent = reader.ReadToEnd();
 
@@ -85,6 +81,26 @@ namespace CoreServicesBootCamp
             }
         }
 
+        struct tmp {
+           public List<request> requests { get; set; }
+        };
+        /// <summary>
+        /// Czytnik plików JSON.
+        /// </summary>
+        private void jsonReader(string file)
+        {
+            
+            string jsonString = File.ReadAllText(file, Encoding.UTF8);
+            tmp requests = JsonConvert.DeserializeObject<tmp>(jsonString);
+            foreach (request req in requests.requests)
+            {
+                database.createOrder(req);
+            }
+            refreshData();
+        }
+        /// <summary>
+        /// Czytnik plików XML.
+        /// </summary>
         private void xmlReader(string file)
         {
             string xmlString = File.ReadAllText(file, Encoding.UTF8);

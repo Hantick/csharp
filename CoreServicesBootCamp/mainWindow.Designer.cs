@@ -32,15 +32,24 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.programToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wczytajBazęToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pokażRaportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ilośćZamówieńToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ilośćZamówieńDlaKlientaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.clientId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.requestId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pokażRaportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ilośćZamówieńToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ilośćZamówieńDlaKlientaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.łToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listaWszystkichZamówieńToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listaZamówieńDlaKlientaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.średniaWartośćZamówieniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.średniaWartośćZamówieniaDlaKlientaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ilośćZamówieńpoNazwieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ilośćZamówieńDlaKlientapoNazwieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zamówieniaWPodanymPrzedzialeCenowymToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -71,6 +80,38 @@
             this.wczytajBazęToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.wczytajBazęToolStripMenuItem.Text = "Wczytaj bazę";
             this.wczytajBazęToolStripMenuItem.Click += new System.EventHandler(this.wczytajBazęToolStripMenuItem_Click);
+            // 
+            // pokażRaportToolStripMenuItem
+            // 
+            this.pokażRaportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ilośćZamówieńToolStripMenuItem,
+            this.ilośćZamówieńDlaKlientaToolStripMenuItem,
+            this.cToolStripMenuItem,
+            this.łToolStripMenuItem,
+            this.listaWszystkichZamówieńToolStripMenuItem,
+            this.listaZamówieńDlaKlientaToolStripMenuItem,
+            this.średniaWartośćZamówieniaToolStripMenuItem,
+            this.średniaWartośćZamówieniaDlaKlientaToolStripMenuItem,
+            this.ilośćZamówieńpoNazwieToolStripMenuItem,
+            this.ilośćZamówieńDlaKlientapoNazwieToolStripMenuItem,
+            this.zamówieniaWPodanymPrzedzialeCenowymToolStripMenuItem});
+            this.pokażRaportToolStripMenuItem.Name = "pokażRaportToolStripMenuItem";
+            this.pokażRaportToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
+            this.pokażRaportToolStripMenuItem.Text = "Pokaż raport";
+            // 
+            // ilośćZamówieńToolStripMenuItem
+            // 
+            this.ilośćZamówieńToolStripMenuItem.Name = "ilośćZamówieńToolStripMenuItem";
+            this.ilośćZamówieńToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.ilośćZamówieńToolStripMenuItem.Size = new System.Drawing.Size(356, 22);
+            this.ilośćZamówieńToolStripMenuItem.Text = "Ilość zamówień";
+            // 
+            // ilośćZamówieńDlaKlientaToolStripMenuItem
+            // 
+            this.ilośćZamówieńDlaKlientaToolStripMenuItem.Name = "ilośćZamówieńDlaKlientaToolStripMenuItem";
+            this.ilośćZamówieńDlaKlientaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
+            this.ilośćZamówieńDlaKlientaToolStripMenuItem.Size = new System.Drawing.Size(356, 22);
+            this.ilośćZamówieńDlaKlientaToolStripMenuItem.Text = "Ilość zamówień dla klienta...";
             // 
             // dataGridView1
             // 
@@ -121,26 +162,69 @@
             this.price.Name = "price";
             this.price.ReadOnly = true;
             // 
-            // pokażRaportToolStripMenuItem
+            // cToolStripMenuItem
             // 
-            this.pokażRaportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ilośćZamówieńToolStripMenuItem,
-            this.ilośćZamówieńDlaKlientaToolStripMenuItem});
-            this.pokażRaportToolStripMenuItem.Name = "pokażRaportToolStripMenuItem";
-            this.pokażRaportToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
-            this.pokażRaportToolStripMenuItem.Text = "Pokaż raport";
+            this.cToolStripMenuItem.Name = "cToolStripMenuItem";
+            this.cToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+C";
+            this.cToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.cToolStripMenuItem.Size = new System.Drawing.Size(356, 22);
+            this.cToolStripMenuItem.Text = "Łączna kwota zamówień";
             // 
-            // ilośćZamówieńToolStripMenuItem
+            // łToolStripMenuItem
             // 
-            this.ilośćZamówieńToolStripMenuItem.Name = "ilośćZamówieńToolStripMenuItem";
-            this.ilośćZamówieńToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
-            this.ilośćZamówieńToolStripMenuItem.Text = "Ilość zamówień";
+            this.łToolStripMenuItem.Name = "łToolStripMenuItem";
+            this.łToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+D";
+            this.łToolStripMenuItem.Size = new System.Drawing.Size(356, 22);
+            this.łToolStripMenuItem.Text = "Łączna kwota zamówień dla klienta...";
             // 
-            // ilośćZamówieńDlaKlientaToolStripMenuItem
+            // listaWszystkichZamówieńToolStripMenuItem
             // 
-            this.ilośćZamówieńDlaKlientaToolStripMenuItem.Name = "ilośćZamówieńDlaKlientaToolStripMenuItem";
-            this.ilośćZamówieńDlaKlientaToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
-            this.ilośćZamówieńDlaKlientaToolStripMenuItem.Text = "Ilość zamówień dla klienta";
+            this.listaWszystkichZamówieńToolStripMenuItem.Name = "listaWszystkichZamówieńToolStripMenuItem";
+            this.listaWszystkichZamówieńToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.listaWszystkichZamówieńToolStripMenuItem.Size = new System.Drawing.Size(356, 22);
+            this.listaWszystkichZamówieńToolStripMenuItem.Text = "Lista wszystkich zamówień";
+            // 
+            // listaZamówieńDlaKlientaToolStripMenuItem
+            // 
+            this.listaZamówieńDlaKlientaToolStripMenuItem.Name = "listaZamówieńDlaKlientaToolStripMenuItem";
+            this.listaZamówieńDlaKlientaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
+            this.listaZamówieńDlaKlientaToolStripMenuItem.Size = new System.Drawing.Size(356, 22);
+            this.listaZamówieńDlaKlientaToolStripMenuItem.Text = "Lista zamówień dla klienta...";
+            // 
+            // średniaWartośćZamówieniaToolStripMenuItem
+            // 
+            this.średniaWartośćZamówieniaToolStripMenuItem.Name = "średniaWartośćZamówieniaToolStripMenuItem";
+            this.średniaWartośćZamówieniaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
+            this.średniaWartośćZamówieniaToolStripMenuItem.Size = new System.Drawing.Size(356, 22);
+            this.średniaWartośćZamówieniaToolStripMenuItem.Text = "Średnia wartość zamówienia";
+            // 
+            // średniaWartośćZamówieniaDlaKlientaToolStripMenuItem
+            // 
+            this.średniaWartośćZamówieniaDlaKlientaToolStripMenuItem.Name = "średniaWartośćZamówieniaDlaKlientaToolStripMenuItem";
+            this.średniaWartośćZamówieniaDlaKlientaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
+            this.średniaWartośćZamówieniaDlaKlientaToolStripMenuItem.Size = new System.Drawing.Size(356, 22);
+            this.średniaWartośćZamówieniaDlaKlientaToolStripMenuItem.Text = "Średnia wartość zamówienia dla klienta...";
+            // 
+            // ilośćZamówieńpoNazwieToolStripMenuItem
+            // 
+            this.ilośćZamówieńpoNazwieToolStripMenuItem.Name = "ilośćZamówieńpoNazwieToolStripMenuItem";
+            this.ilośćZamówieńpoNazwieToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
+            this.ilośćZamówieńpoNazwieToolStripMenuItem.Size = new System.Drawing.Size(356, 22);
+            this.ilośćZamówieńpoNazwieToolStripMenuItem.Text = "Ilość zamówień [po nazwie]";
+            // 
+            // ilośćZamówieńDlaKlientapoNazwieToolStripMenuItem
+            // 
+            this.ilośćZamówieńDlaKlientapoNazwieToolStripMenuItem.Name = "ilośćZamówieńDlaKlientapoNazwieToolStripMenuItem";
+            this.ilośćZamówieńDlaKlientapoNazwieToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.J)));
+            this.ilośćZamówieńDlaKlientapoNazwieToolStripMenuItem.Size = new System.Drawing.Size(356, 22);
+            this.ilośćZamówieńDlaKlientapoNazwieToolStripMenuItem.Text = "Ilość zamówień dla klienta... [po nazwie]";
+            // 
+            // zamówieniaWPodanymPrzedzialeCenowymToolStripMenuItem
+            // 
+            this.zamówieniaWPodanymPrzedzialeCenowymToolStripMenuItem.Name = "zamówieniaWPodanymPrzedzialeCenowymToolStripMenuItem";
+            this.zamówieniaWPodanymPrzedzialeCenowymToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.K)));
+            this.zamówieniaWPodanymPrzedzialeCenowymToolStripMenuItem.Size = new System.Drawing.Size(356, 22);
+            this.zamówieniaWPodanymPrzedzialeCenowymToolStripMenuItem.Text = "Zamówienia w podanym przedziale cenowym";
             // 
             // mainWindow
             // 
@@ -176,6 +260,15 @@
         private System.Windows.Forms.ToolStripMenuItem pokażRaportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ilośćZamówieńToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ilośćZamówieńDlaKlientaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem łToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listaWszystkichZamówieńToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listaZamówieńDlaKlientaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem średniaWartośćZamówieniaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem średniaWartośćZamówieniaDlaKlientaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ilośćZamówieńpoNazwieToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ilośćZamówieńDlaKlientapoNazwieToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem zamówieniaWPodanymPrzedzialeCenowymToolStripMenuItem;
     }
 }
 
