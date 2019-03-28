@@ -17,6 +17,7 @@ namespace CoreServicesBootCamp.UnitTests
             database.createOrder(null, 0, null, 0, 0);
             database.createOrder(null, 0, "test", 0, 0);
             database.createOrder("test", 0, null, 0, 0);
+            database.check();
         }
 
         [TestMethod]
@@ -28,6 +29,7 @@ namespace CoreServicesBootCamp.UnitTests
             var database = new InMemoryDatabase();
             //Act
             database.createOrder("MK 12", 0, "nazwa", 0, 0);
+            database.check();
         }
 
         [TestMethod]
@@ -39,6 +41,7 @@ namespace CoreServicesBootCamp.UnitTests
             var database = new InMemoryDatabase();
             //Act
             database.createOrder("MichaelK12", 0, "nazwa", 0, 0);
+            database.check();
         }
 
         [TestMethod]
@@ -49,6 +52,7 @@ namespace CoreServicesBootCamp.UnitTests
             var database = new InMemoryDatabase();
             //Act
             database.createOrder("MichaelK 12", 0, "nazwa", 0, 0);
+            database.check();
         }
 
         [TestMethod]
@@ -59,6 +63,7 @@ namespace CoreServicesBootCamp.UnitTests
             var database = new InMemoryDatabase();
             //Act
             database.createOrder("MK12", 32323232, "Nazwa jest po prostu za dług4, pozdrawiam cieplutko wszystkich z Core Services i życzę miłego dnia/wieczoru. 12343442. Muszę coś jeszcze dopisać, bo chyba nie osiagnalem 255 znaków. RATATATATATAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 0, 0);
+            database.check();
         }
     }
 }
